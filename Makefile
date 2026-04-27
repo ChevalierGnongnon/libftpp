@@ -21,3 +21,27 @@ SOURCES = $(SOURCES_DATASTRUCTURES) $(SOURCES_DESIGN_PATTERNS) $(SOURCES_IOSTREA
 
 OBJECTS = $(patsubst sources/%.cpp, objects/%.o, $(SOURCES))
 
+CPPFLAGS = -Werror -Wextra -Wall -std=c++11
+
+NAME = libftpp.a
+
+RM = rm -f
+
+all: $(NAME)
+
+$(NAME) : $(OBJECTS)
+	ar rcs $(NAME) $(OBJECTS)
+
+objects/%.o: sources/%.cpp
+	mkdir -p $(dir $@)
+	c++ $(CPPFLAGS) -c $< -o $@
+
+clean : 
+	$(RM) $(OBJECTS)
+
+fclean : clean
+	$(RM) $(NAME)
+
+re : fclean all
+
+.PHONY: all clean fclean re
