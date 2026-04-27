@@ -17,3 +17,7 @@ SOURCES_THREAD = sources/Thread/PersistentWorker/persistent_worker.cpp \
 				sources/Thread/Thread/thread.cpp \
 				sources/Thread/WorkerPool/worker_pool.cpp
 
+SOURCES = $(SOURCES_DATASTRUCTURES) $(SOURCES_DESIGN_PATTERNS) $(SOURCES_IOSTREAM) $(SOURCES_MATHEMATICS) $(SOURCES_NETWORK) $(SOURCES_THREAD)
+
+OBJECTS = $(patsubst sources/%.cpp, objects/%.o, $(SOURCES))
+
